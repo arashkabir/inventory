@@ -1,0 +1,79 @@
+
+<!--show price dailog-->
+<div [hidden]="hidePriceDialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Price</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-3">Product Name:</div>
+                    <div class="col-lg-9"> <input type="text" [required]="true"  id="productDescription" name="productDescription" [(ngModel)]="productDescription" class="form-control text-center" > </div>
+               </div>
+<div class="row">
+                    <div class="col-lg-3">Price:</div>
+                    <div class="col-lg-3"><input type="number" [required]="true"  class="form-control" style="width:100px"  id="productPrice" name="productPrice" [(ngModel)]="unitPrice"  ></div>
+                    <div class="col-lg-6"></div>
+</div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="cancelDialog($event)"  data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" (click)="addItem($event)" >Ok</button>
+            </div>
+          </div>
+        </div>
+   </div>
+<!-- scanner field-->
+<input type="text" style="height: 0px;width: 0px;overflow: hidden;opacity:0.0"  id="productName" name="productName" [(ngModel)]="productName" class="form-control text-center" (change)="onScan($event)"
+    required />
+    <button type="button" (click)="removeItem(item)" class="btn btn-link">Manul Entry</button>
+<!-- total price-->
+<span>
+    <h1>Total: ${{totalPrice}}</h1>
+</span>
+<!-- Payment type -->
+<span>
+    <h1>payment Type:
+        <ng-container *ngFor="let pay of paymentTypes">
+            <label>
+                <input type="radio" (change)="paymentClick($event)" name="payment" [(ngModel)]="paymentType" [value]="pay.value"> {{pay.display}}
+            </label>
+        </ng-container>
+    </h1>
+</span>
+<!-- customer bill amount -->
+<span>
+    <h1>Customer Bill:$
+        <input [(ngModel)]="customerBill" type="text" required />
+    </h1>
+</span>
+<!-- customer remain amount -->
+<span>
+    <h1>Remain:<b> ${{customerBill - totalPrice}}</b></h1>
+</span>
+<div class="col-lg-3"></div><div class="col-lg-4"><button type="button" (click)="pay($event)" class="btn btn-success">Pay</button></div><div class="col-lg-5"></div>
+
+<div class="col-lg-12"><br/><br/></div>
+
+<table class="table table-striped" style="width: 50%">
+    <thead>
+        <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr scope="row" *ngFor="let item of salesList">
+            <td>{{item.productCode}}</td>
+            <td>{{item.quantity}}</td>
+            <td>${{item.unitPrice}}</td>
+            <td>${{item.totalPrice}}</td>
+            <td><button type="button" (click)="removeItem(item)" class="btn btn-link">Remove</button></td>
+        </tr>
+    </tbody>
+</table>
+
