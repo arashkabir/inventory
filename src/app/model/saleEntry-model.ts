@@ -4,5 +4,5 @@ export class SaleEntry {
     totalPrice:number;
     productCode: string;
     productName: string;
-  }
+  }  
   
