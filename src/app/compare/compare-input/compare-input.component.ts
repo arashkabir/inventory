@@ -43,4 +43,9 @@ export class CompareInputComponent implements OnInit {
     this.router.navigate(['/saleEntry']);
    // this.compareService.onRetrieveData(false);
   }
+
+  RouteToInventory() {
+    this.router.navigate(['/inventoryEntry']);
+ 
+  }
 }

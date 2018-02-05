@@ -3,11 +3,11 @@ import {SaleEntry} from '../model/saleEntry-model'
 
 declare var document: any;
 @Component({
-  selector: 'app-sale-entry',
-  templateUrl: './saleEntry.component.html'
+  selector: 'app-inventory-entry',
+  templateUrl: './inventoryEntry.component.html'
 })
 
-export class SaleEntryComponent implements OnInit {
+export class InventoryEntry implements OnInit {
   salesList: SaleEntry[];
   totalPrice:number;
   customerBill:number;
@@ -117,7 +117,7 @@ export class SaleEntryComponent implements OnInit {
     product.unitPrice=1.25;
     product.totalPrice=product.unitPrice;
     
-    this.onAddToSaleList(product);
+    //this.onAddToSaleList(product);
     
   }
 

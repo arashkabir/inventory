@@ -5,6 +5,7 @@ import { SigninComponent } from './user/signin/signin.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { CompareComponent } from './compare/compare.component';
 import { SaleEntryComponent } from './sale/saleEntry.component';
+import {InventoryEntry} from './sale/inventoryEntry.component';
 import { AuthGuard } from './user/auth-guard.service';
 
 const routes: Routes = [
@@ -12,6 +13,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'compare', canActivate: [AuthGuard], component: CompareComponent },
   { path: 'saleEntry', canActivate: [AuthGuard], component: SaleEntryComponent },
+  { path: 'inventoryEntry', canActivate: [AuthGuard], component: InventoryEntry },
+  
 ];
 
 @NgModule({

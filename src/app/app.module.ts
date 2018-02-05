@@ -13,6 +13,8 @@ import { CompareService } from './compare/compare.service';
 import { CompareInputComponent } from './compare/compare-input/compare-input.component';
 import { CompareResultsComponent } from './compare/compare-results/compare-results.component';
 import {SaleEntryComponent} from './sale/saleEntry.component';
+import {InventoryEntry} from './sale/inventoryEntry.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {SaleEntryComponent} from './sale/saleEntry.component';
     CompareComponent,
     CompareInputComponent,
     CompareResultsComponent,
-    SaleEntryComponent
+    SaleEntryComponent,
+    InventoryEntry
   ],
   imports: [
     BrowserModule,

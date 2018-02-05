@@ -1,33 +1,73 @@
-
 <!--show price dailog-->
 <div [hidden]="hidePriceDialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Price</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Price</h5>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-3">Product Name:</div>
-                    <div class="col-lg-9"> <input type="text" [required]="true"  id="productDescription" name="productDescription" [(ngModel)]="productDescription" class="form-control text-center" > </div>
-               </div>
-<div class="row">
+                    <div class="col-lg-9">
+                        <input type="text" [required]="true" id="productDescription" name="productDescription" [(ngModel)]="productDescription"
+                            class="form-control text-center"> </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-3">Price:</div>
-                    <div class="col-lg-3"><input type="number" [required]="true"  class="form-control" style="width:100px"  id="productPrice" name="productPrice" [(ngModel)]="unitPrice"  ></div>
+                    <div class="col-lg-3">
+                        <input type="number" [required]="true" class="form-control" style="width:100px" id="productPrice" name="productPrice"
+                            [(ngModel)]="unitPrice">
+                    </div>
                     <div class="col-lg-6"></div>
-</div>
+                </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" (click)="cancelDialog($event)"  data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" (click)="addItem($event)" >Ok</button>
+                <button type="button" class="btn btn-secondary" (click)="cancelDialog($event)" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" (click)="addItem($event)">Ok</button>
             </div>
-          </div>
         </div>
-   </div>
+    </div>
+</div>
 <!-- scanner field-->
-<input type="text" style="height: 0px;width: 0px;overflow: hidden;opacity:0.0"  id="productName" name="productName" [(ngModel)]="productName" class="form-control text-center" (change)="onScan($event)"
-    required />
-    <button type="button" (click)="removeItem(item)" class="btn btn-link">Manul Entry</button>
+<input type="text" style="height: 0px;width: 0px;overflow: hidden;opacity:0.0" id="productName" name="productName" [(ngModel)]="productName"
+    class="form-control text-center" (change)="onScan($event)" required />
+<!--manual entry-->
+<button type="button" (click)="allowManulaEntry(item)" class="btn btn-link">Manul Entry</button>
+<button type="button" (click)="scanEntry(item)" class="btn btn-link">Scan</button>
+<div [hidden]="hideManulaEntry" >
+
+<span>
+    <h1>Product Name:
+        <select></select>
+    </h1>
+</span>
+
+
+<span>
+    <h1>Unit Price:$
+        <input [(ngModel)]="manualPrice" type="text" required />
+    </h1>
+</span>
+<span>
+    <h1>Quantity:
+        <input [(ngModel)]="manualPrice" type="text" required />
+    </h1>
+</span>
+
+
+<div>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-4">
+        <button type="button" (click)="addItemManualy($event)" class="btn btn-success">Add Item</button>&nbsp;
+        <button type="button" (click)="closeManulalEntry($event)" class="btn btn-cancel">close</button>
+    </div>
+    <div class="col-lg-5"></div>
+</div>
+</div>
+<br/>
+
+
+
 <!-- total price-->
 <span>
     <h1>Total: ${{totalPrice}}</h1>
@@ -50,11 +90,20 @@
 </span>
 <!-- customer remain amount -->
 <span>
-    <h1>Remain:<b> ${{customerBill - totalPrice}}</b></h1>
+    <h1>Remain:
+        <b> ${{customerBill - totalPrice}}</b>
+    </h1>
 </span>
-<div class="col-lg-3"></div><div class="col-lg-4"><button type="button" (click)="pay($event)" class="btn btn-success">Pay</button></div><div class="col-lg-5"></div>
+<div class="col-lg-3"></div>
+<div class="col-lg-4">
+    <button type="button" (click)="pay($event)" class="btn btn-success">Pay</button>
+</div>
+<div class="col-lg-5"></div>
 
-<div class="col-lg-12"><br/><br/></div>
+<div class="col-lg-12">
+    <br/>
+    <br/>
+</div>
 
 <table class="table table-striped" style="width: 50%">
     <thead>
@@ -72,8 +121,9 @@
             <td>{{item.quantity}}</td>
             <td>${{item.unitPrice}}</td>
             <td>${{item.totalPrice}}</td>
-            <td><button type="button" (click)="removeItem(item)" class="btn btn-link">Remove</button></td>
+            <td>
+                <button type="button" (click)="removeItem(item)" class="btn btn-link">Remove</button>
+            </td>
         </tr>
     </tbody>
 </table>
-

@@ -1,0 +1,34 @@
+
+
+<!--manual entry-->
+<button type="button" (click)="allowManulaEntry(item)" class="btn btn-link">Manul Entry</button> 
+<button type="button" (click)="scanEntry(item)" class="btn btn-link">Scan</button>
+
+<span>
+        <h1>Barcode Number:
+                <input type="text"   id="productName" name="productName" [(ngModel)]="productName"  (change)="onScan($event)" required />
+        </h1>
+    </span>
+<span>
+        <h1>Product Name:
+                <input [(ngModel)]="manualPrice" type="text" required />
+        </h1>
+    </span>
+    <span>
+            <h1>Buy Price:$
+                <input [(ngModel)]="manualPrice" type="text" required />
+            </h1>
+   </span>
+
+   <span>
+        <h1>sale Price:$
+            <input [(ngModel)]="manualPrice" type="text" required />
+        </h1>
+</span>
+<span>
+    <h1>Quantity:
+        <input [(ngModel)]="manualPrice" type="text" required />
+    </h1>
+</span>
+
+
