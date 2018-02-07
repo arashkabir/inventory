@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener ,ViewChild, ElementRef,Renderer  } from '@angular/core';
 import {SaleEntry} from '../model/saleEntry-model'
-
+import{DataService} from '../service/data.service';
 declare var document: any;
 @Component({
   selector: 'app-inventory-entry',
@@ -24,7 +24,7 @@ export class InventoryEntry implements OnInit {
 
   @ViewChild('productName') productNameElement: ElementRef;
 
-  constructor(private renderer: Renderer) {
+  constructor(private renderer: Renderer, private dataService: DataService) {
     this.salesList=[];
     this.hidePriceDialog=true;
     this.paymentType="Cash";
@@ -111,6 +111,8 @@ export class InventoryEntry implements OnInit {
   
   }
   onScan(){
+
+   
     var product= new SaleEntry();
     product.productCode=this.productName;
     product.quantity=1;

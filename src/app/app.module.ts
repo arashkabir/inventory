@@ -14,7 +14,7 @@ import { CompareInputComponent } from './compare/compare-input/compare-input.com
 import { CompareResultsComponent } from './compare/compare-results/compare-results.component';
 import {SaleEntryComponent} from './sale/saleEntry.component';
 import {InventoryEntry} from './sale/inventoryEntry.component';
-
+import {DataService} from './service/data.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import {InventoryEntry} from './sale/inventoryEntry.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [AuthService, CompareService],
+  providers: [AuthService, CompareService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

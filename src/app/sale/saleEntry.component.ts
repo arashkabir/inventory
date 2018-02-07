@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener ,ViewChild, ElementRef,Renderer  } from '@angular/core';
 import {SaleEntry} from '../model/saleEntry-model'
-
+import {DataService} from '../service/data.service'
 declare var document: any;
 @Component({
   selector: 'app-sale-entry',
@@ -21,10 +21,11 @@ export class SaleEntryComponent implements OnInit {
   manualPrice:number;
   manualProductSelect:string;
   hideManulaEntry:boolean;
+  token:string;
 
   @ViewChild('productName') productNameElement: ElementRef;
 
-  constructor(private renderer: Renderer) {
+  constructor(private renderer: Renderer, private dataService: DataService) {
     this.salesList=[];
     this.hidePriceDialog=true;
     this.paymentType="Cash";
@@ -54,7 +55,7 @@ export class SaleEntryComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+  this.token= this.dataService.getToken();
   }
 
 
@@ -111,6 +112,8 @@ export class SaleEntryComponent implements OnInit {
   
   }
   onScan(){
+this.dataService.getProductByBarcode(this.productName,this.token).subscribe(d =>(d=d));
+   
     var product= new SaleEntry();
     product.productCode=this.productName;
     product.quantity=1;
